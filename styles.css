@@ -35,7 +35,15 @@ nav ul li {
 }
 
 nav ul li a:hover {
-    color: #1e3aff
+   color: #1e3aff;
+}
+
+#github:hover {
+    color: #000000;
+}
+
+#youtube:hover {
+    color: red;
 }
 
 nav ul li a {
