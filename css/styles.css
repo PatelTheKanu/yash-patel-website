@@ -3,15 +3,19 @@ body {
     padding: 40px
 }
 
+#intro {
+    height: 300px;
+}
+
 #intro-selfie {
     border-radius: 60%;
     width: 200px;
-    float:left
+    vertical-align: middle;
 }
 
 #intro-text {
-    text-align: left;
-    font-size: large;
+    font-size: xx-large;
+    padding: 20px;
 }
 
 nav {
@@ -38,6 +42,11 @@ nav ul li a:hover {
    color: #1e3aff;
 }
 
+
+.section-label {
+    color: DodgerBlue;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 #github:hover {
     color: #000000;
 }
