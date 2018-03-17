@@ -1,6 +1,6 @@
 body {
     background-color: white;
-    padding: 40px
+    padding: 40px;
 }
 
 #intro {
@@ -18,24 +18,23 @@ body {
     padding: 20px;
 }
 
+#navBar {
+    position: fixed;
+    right: 0;
+    padding-right: 40px;
+}
 nav {
-    padding: 20px;
     display: block;
     clear: both;
     height: 60px;
 }
 
-nav ul {
-    float: right;
-}
-
 nav ul li {
     display: inline-block;
-    position: relative;
     padding: 15px;
     background-color: DodgerBlue;
     border-radius: 4px;
-    padding 10px 20px;
+    margin: 0 15px 0 0;
 }
 
 nav ul li a:hover {
@@ -47,6 +46,7 @@ nav ul li a:hover {
     color: DodgerBlue;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
 #github:hover {
     color: #000000;
 }
@@ -59,4 +59,3 @@ nav ul li a {
     text-decoration: none;
     color: white;
 }
-
