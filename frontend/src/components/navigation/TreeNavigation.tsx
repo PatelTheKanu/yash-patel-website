@@ -100,7 +100,7 @@ const TreeNavigation: React.FC<TreeNavigationProps> = ({ items }) => {
           Yash Patel
         </Typography>
         <Typography variant="subtitle2" color="text.secondary">
-          Personal Website
+          Welcome to my world
         </Typography>
       </Box>
       <List

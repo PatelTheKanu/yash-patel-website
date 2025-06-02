@@ -40,12 +40,13 @@ export const HelloWorldPage: React.FC = () => {
         Hello World
       </Typography>
       <Typography variant="body1" paragraph>
-        Welcome to my personal website! I&apos;m a software developer passionate about creating
-        meaningful applications and solving complex problems.
+        My name is Yash Patel and I&apos;m a software engineer passionate about creating meaningful
+        applications and solving complex problems. My industries of interest are clean meat,
+        alternative protein, biotechnology, transportation, and AI.
       </Typography>
       <Typography variant="body1">
-        This site is built with React, TypeScript, and Material UI, with a Django backend. Feel free
-        to explore the different sections to learn more about me and my work.
+        This site is built with React, TypeScript, and Material UI, with a python Django backend.
+        Feel free to explore the different sections to learn more about me and my work.
       </Typography>
     </AnimatedContent>
   );
@@ -58,8 +59,8 @@ export const AboutPage: React.FC = () => {
         About Me
       </Typography>
       <Typography variant="body1" paragraph>
-        I&apos;m a full-stack developer with experience in React, TypeScript, and Django. I love
-        learning new technologies and building innovative solutions.
+        I&apos;m a full-stack developer with professional experience in Python, Django, TypeScript,
+        React, Scala, and Play. I enjoy learning new technologies and building innovative solutions.
       </Typography>
       <Typography variant="body1">
         My journey in software development began with a curiosity about how applications work and
