@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import { HelloWorldPage, AboutPage, ExperiencePage } from './pages/HelloWorld/HelloWorld';
 import { HobbiesPage, GamingPage, ReadingPage } from './pages/Hobbies/Hobbies';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 // Create a theme instance with better default colors and spacing
 const theme = createTheme({

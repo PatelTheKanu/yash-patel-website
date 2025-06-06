@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Typography, Paper, Box } from '@mui/material';
+import { Typography, Paper, Box, Link, IconButton } from '@mui/material';
+import { LinkedIn } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
 const AnimatedBox = motion(Box);
@@ -39,14 +40,33 @@ export const HelloWorldPage: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         Hello World
       </Typography>
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1">
         My name is Yash Patel and I&apos;m a software engineer passionate about creating meaningful
         applications and solving complex problems. My industries of interest are clean meat,
         alternative protein, biotechnology, transportation, and AI.
       </Typography>
       <Typography variant="body1">
-        This site is built with React, TypeScript, and Material UI, with a python Django backend.
-        Feel free to explore the different sections to learn more about me and my work.
+        My professional experience is in Python, Django, TypeScript, React, Scala, and Play. Learn
+        more on my LinkedIn
+        {
+          <Link
+            href="https://www.linkedin.com/in/the-yash-patel/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              ml: 0.5,
+              textDecoration: 'none',
+              color: 'primary.main',
+              '&:hover': {
+                color: 'primary.dark',
+              },
+            }}
+          >
+            <LinkedIn sx={{ fontSize: '1.2rem', mr: 0.5 }} />
+          </Link>
+        }
       </Typography>
     </AnimatedContent>
   );
@@ -59,13 +79,22 @@ export const AboutPage: React.FC = () => {
         About Me
       </Typography>
       <Typography variant="body1" paragraph>
-        I&apos;m a full-stack developer with professional experience in Python, Django, TypeScript,
-        React, Scala, and Play. I enjoy learning new technologies and building innovative solutions.
+        My journey in software development began with a curiosity about how computers work and has
+        evolved into a passion for creating elegant, user-friendly experiences that solve real-world
+        problems.
+      </Typography>
+      <Typography variant="body1" paragraph>
+        During my childhood both of my parents work in the tech industry. My dad would bring home
+        lots of computers and computer parts. Naturally, this lead me to disasembling and
+        reassembling computers at a young age. My interest in technology grew so I started a youtube
+        channel where I shared software tutorials, technology reviews, and technology unboxing
+        videos. The channel was marginally successful getting over 660k views cummulatively.
       </Typography>
       <Typography variant="body1">
-        My journey in software development began with a curiosity about how applications work and
-        has evolved into a passion for creating elegant, user-friendly experiences that solve
-        real-world problems.
+        So I knew from a young age I wanted to work in tech. I got my bachelors from University of
+        Minnesota in Computer Science. My biggest hurdle since then has been deciding exactly which
+        areas of tech to dive deep into. Since I have a interest in many areas, which is what has
+        lead to stick with full stack web development.
       </Typography>
     </AnimatedContent>
   );

@@ -44,8 +44,8 @@ export const HobbiesPage: React.FC = () => {
         glimpse into what I enjoy during my free time.
       </Typography>
       <Typography variant="body1">
-        Whether it&apos;s gaming, reading, or exploring new technologies, these activities help me
-        maintain a balanced life and often inspire creative solutions in my work.
+        Whether it&apos;s gaming, reading, fitness, or exploring new technologies, these activities
+        help me maintain a balanced life and often inspire creative solutions in my work.
       </Typography>
     </AnimatedContent>
   );
