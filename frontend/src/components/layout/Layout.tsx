@@ -6,11 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import TreeNavigation from '../navigation/TreeNavigation';
 import { navigationItems } from '../../routes/navigationConfig';
 import { Footer } from './Footer';
+import { GradientBackground } from '../background/GradientBackground';
 
 const MainContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   minHeight: '100vh',
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: 'transparent',
 }));
 
 const ContentContainer = styled(Box)(({ theme }) => ({
@@ -20,6 +21,12 @@ const ContentContainer = styled(Box)(({ theme }) => ({
   overflowY: 'auto',
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
+  zIndex: 1,
+  '& > *': {
+    backdropFilter: 'blur(10px)',
+    borderRadius: theme.shape.borderRadius,
+  },
 }));
 
 const AnimatedContent = styled(motion.div)({
@@ -39,6 +46,7 @@ const Layout: React.FC = () => {
   return (
     <MainContainer>
       <CssBaseline />
+      <GradientBackground />
 
       {/* Main Content */}
       <ContentContainer>
@@ -60,10 +68,14 @@ const Layout: React.FC = () => {
           right: 0,
           height: '100vh',
           overflowY: 'auto',
-          borderLeft: '1px solid',
+          borderLeft: 'none',
           borderColor: 'divider',
           zIndex: 1000,
-          backgroundColor: 'background.paper',
+          backdropFilter: 'blur(10px)',
+          backgroundColor: 'transparent',
+          '& > *': {
+            backdropFilter: 'blur(10px)',
+          },
         }}
       >
         <TreeNavigation items={navigationItems} />

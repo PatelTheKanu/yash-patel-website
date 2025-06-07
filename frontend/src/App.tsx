@@ -13,7 +13,7 @@ const theme = createTheme({
       main: '#9575cd', // Updated to match your favicon color
     },
     background: {
-      default: '#f5f5f5',
+      default: '#FFFFFF00',
       paper: '#ffffff',
     },
   },

@@ -8,6 +8,7 @@ import HourglassDisabledIcon from '@mui/icons-material/HourglassDisabled';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
 
 export interface NavigationItem {
   label: string;
@@ -47,6 +48,11 @@ export const navigationItems: NavigationItem[] = [
       {
         label: 'Background',
         scrollTo: 'background',
+        icon: (
+          <StyledIcon>
+            <WallpaperIcon />
+          </StyledIcon>
+        ),
       },
     ],
   },

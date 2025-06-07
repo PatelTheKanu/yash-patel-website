@@ -120,7 +120,7 @@ const TreeNavigation: React.FC<TreeNavigationProps> = ({ items }) => {
       sx={{
         width: '100%',
         maxWidth: 360,
-        bgcolor: 'background.paper',
+        bgcolor: 'transparent',
         p: 2,
       }}
     >

@@ -110,7 +110,7 @@ const PersonalContent: React.FC = () => (
         Fitness
       </Typography>
       <Typography variant="body1" paragraph>
-        My Aunt&apos;s catch phrase is &quot;Health is wealth&quot;, and I couldn&aspos;t have said
+        My Aunt&apos;s catch phrase is &quot;Health is wealth&quot;, and I couldn&apos;t have said
         it better myself. Maintaining physical health is crucial for mental clarity and overall
         well-being.
       </Typography>
