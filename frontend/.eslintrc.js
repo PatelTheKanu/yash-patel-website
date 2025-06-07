@@ -1,18 +1,29 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   extends: [
-    'react-app',
-    'plugin:react/recommended',
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier',
   ],
-  plugins: ['react', '@typescript-eslint', 'react-hooks', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'lf',
+      },
+    ],
+    'linebreak-style': ['error', 'unix'],
     'react/react-in-jsx-scope': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'prettier/prettier': 'error',
   },
   settings: {
     react: {
@@ -20,4 +31,3 @@ module.exports = {
     },
   },
 };
-
