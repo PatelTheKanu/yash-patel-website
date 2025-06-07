@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import TreeNavigation from '../navigation/TreeNavigation';
 import { navigationItems } from '../../routes/navigationConfig';
-import { ActiveSectionProvider } from '../../context/ActiveSectionContext';
+import { Footer } from './Footer';
 
 const MainContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -47,6 +47,7 @@ const Layout: React.FC = () => {
             <Outlet />
           </AnimatedContent>
         </AnimatePresence>
+        <Footer />
       </ContentContainer>
 
       {/* Fixed Navigation Sidebar - Now on the right */}
