@@ -1,7 +1,15 @@
 # Author
+
 Yash Patel
 
 # Description
+
 The code behind the website located at www.yashpatel.website
 
-The site is built with React, TypeScript, and Material UI on the frontend, and with python Django backend. 
+The site is built with React, TypeScript, and Material UI on the frontend, and with python Django backend.
+
+TODO:
+
+- get rid of react icons
+- Add linked in at the bottom and github links
+- Add background that moves
