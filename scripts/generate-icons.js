@@ -25,4 +25,18 @@ async function generateFavicon() {
   }
 }
 
+async function generateLogo(size) {
+  const svgBuffer = fs.readFileSync(
+    path.join(__dirname, '../frontend/public/favicon.svg')
+  );
+  const pngBuffer = await sharp(svgBuffer).resize(size, size).png().toBuffer();
+  fs.writeFileSync(
+    path.join(__dirname, `../frontend/public/logo${size}.png`),
+    pngBuffer
+  );
+  console.log(`Logo with size of ${size} generated successfully!`);
+}
+
 generateFavicon();
+generateLogo(192);
+generateLogo(512);
