@@ -1,8 +1,9 @@
 import React from 'react';
 import { Typography, Paper, Box, Link } from '@mui/material';
-import { LinkedIn } from '@mui/icons-material';
 import InfiniteScrollLayout from '../../components/layout/InfiniteScrollLayout';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import ChessQueenIcon from '../../components/icons/ChessQueenIcon';
+import Button from '@mui/material/Button';
 
 const ProfessionalContent: React.FC = () => (
   <Box id="professional" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -12,28 +13,10 @@ const ProfessionalContent: React.FC = () => (
         About Me
       </Typography>
       <Typography variant="body1" paragraph>
-        My name is Yash Patel and I'm a software engineer passionate about creating meaningful
-        applications and solving complex problems. My industries of interest are clean meat,
-        alternative protein, biotechnology, transportation, and AI.
+        My name is Yash Patel and I&apos;m a software engineer. My industries of interest are clean
+        meat, alternative protein, biotechnology, transportation, and AI. I&apos;m currently working
+        at Myriad Genetics.
       </Typography>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Typography variant="body1">Connect with me on</Typography>
-        <Link
-          href="https://www.linkedin.com/in/the-yash-patel/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            textDecoration: 'none',
-            color: 'primary.main',
-            '&:hover': { color: 'primary.dark' },
-          }}
-        >
-          <LinkedIn sx={{ fontSize: '1.2rem', mr: 0.5 }} />
-          LinkedIn
-        </Link>
-      </Box>
     </Paper>
 
     {/* Experience */}
@@ -42,9 +25,7 @@ const ProfessionalContent: React.FC = () => (
         Professional Experience
       </Typography>
       <Typography variant="body1" paragraph>
-        My experience spans front-end and back-end development, with a focus on creating responsive,
-        accessible, and performant web applications. I'm particularly interested in user experience
-        design and building systems that scale.
+        I have worked full time at United Health Group, Rally Health, and Myriad Genetics.
       </Typography>
       <Typography variant="body1">
         My professional experience is in Python, Django, TypeScript, React, Scala, and Play.
@@ -64,8 +45,8 @@ const ProfessionalContent: React.FC = () => (
         videos. The channel was marginally successful getting over 660k views cumulatively.
       </Typography>
       <Typography variant="body1">
-        I got my bachelor's from University of Minnesota in Computer Science. My biggest hurdle
-        since then has been deciding exactly which areas of tech to dive deep into. Since I have an
+        I got my bachelor&apos;s from University of Minnesota in Computer Science. My biggest hurdle
+        since then has been deciding exactly which areas of tech to dive deep into. I have an
         interest in many areas, which is what has led me to stick with full stack web development.
       </Typography>
     </Paper>
@@ -91,13 +72,19 @@ const PersonalContent: React.FC = () => (
         Gaming
       </Typography>
       <Typography variant="body1" paragraph>
-        Gaming has always been a passion of mine, combining storytelling, problem-solving, and
-        entertainment in unique ways.
+        Games of all kind (table top to video) have always been a passion of mine, combining
+        storytelling, problem-solving, and entertainment in unique ways.
       </Typography>
       <Typography variant="body1">
         I enjoy both competitive and story-driven games, particularly those that challenge
         conventional thinking or offer unique mechanical innovations. Some of my favorite genres
-        include strategy games, RPGs, and innovative indie titles.
+        include strategy games, RPGs, and innovative indie titles. That said nowadays I mostly play
+        chess; challenge me on{' '}
+        {
+          <Button href="https://www.chess.com/member/mangster29" endIcon={<ChessQueenIcon />}>
+            Chess.com
+          </Button>
+        }
       </Typography>
     </Paper>
 
@@ -123,11 +110,12 @@ const PersonalContent: React.FC = () => (
         Fitness
       </Typography>
       <Typography variant="body1" paragraph>
-        Maintaining physical health is crucial for mental clarity and overall well-being.
+        My Aunt&apos;s catch phrase is &quot;Health is wealth&quot;, and I couldn&aspos;t have said
+        it better myself. Maintaining physical health is crucial for mental clarity and overall
+        well-being.
       </Typography>
       <Typography variant="body1">
-        I enjoy a mix of strength training and cardio exercises. Regular exercise helps me maintain
-        energy levels and stay focused during long coding sessions.
+        My favorite ways to stay fit are running, hiking, rock climbing, lifting, and yoga.
       </Typography>
     </Paper>
   </Box>

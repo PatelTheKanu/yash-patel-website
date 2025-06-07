@@ -3,7 +3,6 @@ import { StyledIcon } from '../icons/StyledIcon';
 import YoutubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GithubIcon from '@mui/icons-material/GitHub';
-import Link from '@mui/icons-material/Link';
 import Button from '@mui/material/Button';
 
 interface FooterItem {
