@@ -40,12 +40,12 @@ export const HelloWorldPage: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         Hello World
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" paragraph>
         My name is Yash Patel and I&apos;m a software engineer passionate about creating meaningful
         applications and solving complex problems. My industries of interest are clean meat,
         alternative protein, biotechnology, transportation, and AI.
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" paragraph>
         My professional experience is in Python, Django, TypeScript, React, Scala, and Play. Learn
         more on my LinkedIn
         {
