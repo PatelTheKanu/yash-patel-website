@@ -6,6 +6,7 @@ import { HelloWorldPage, AboutPage, ExperiencePage } from './pages/HelloWorld/He
 import { HobbiesPage, GamingPage, ReadingPage } from './pages/Hobbies/Hobbies';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
+import { ActiveSectionProvider } from './context/ActiveSectionContext';
 
 // Create a theme instance with better default colors and spacing
 const theme = createTheme({
@@ -38,18 +39,20 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="hello-world" element={<HelloWorldPage />} />
-            <Route path="hello-world/about" element={<AboutPage />} />
-            <Route path="hello-world/experience" element={<ExperiencePage />} />
-            <Route path="hobbies" element={<HobbiesPage />} />
-            <Route path="hobbies/gaming" element={<GamingPage />} />
-            <Route path="hobbies/reading" element={<ReadingPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
+        <ActiveSectionProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="hello-world" element={<HelloWorldPage />} />
+              <Route path="hello-world/about" element={<AboutPage />} />
+              <Route path="hello-world/experience" element={<ExperiencePage />} />
+              <Route path="hobbies" element={<HobbiesPage />} />
+              <Route path="hobbies/gaming" element={<GamingPage />} />
+              <Route path="hobbies/reading" element={<ReadingPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </ActiveSectionProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

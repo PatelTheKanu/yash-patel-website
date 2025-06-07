@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import TreeNavigation from '../navigation/TreeNavigation';
 import { navigationItems } from '../../routes/navigationConfig';
+import { ActiveSectionProvider } from '../../context/ActiveSectionContext';
 
 const MainContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -15,7 +16,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const ContentContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  marginLeft: 280, // Match the width of the navigation sidebar
+  marginRight: 280,
   overflowY: 'auto',
   display: 'flex',
   flexDirection: 'column',
@@ -39,23 +40,6 @@ const Layout: React.FC = () => {
     <MainContainer>
       <CssBaseline />
 
-      {/* Fixed Navigation Sidebar */}
-      <Box
-        component="nav"
-        sx={{
-          width: 280,
-          flexShrink: 0,
-          position: 'fixed',
-          height: '100vh',
-          overflowY: 'auto',
-          borderRight: '1px solid',
-          borderColor: 'divider',
-          zIndex: 1000,
-        }}
-      >
-        <TreeNavigation items={navigationItems} />
-      </Box>
-
       {/* Main Content */}
       <ContentContainer>
         <AnimatePresence mode="wait">
@@ -64,6 +48,25 @@ const Layout: React.FC = () => {
           </AnimatedContent>
         </AnimatePresence>
       </ContentContainer>
+
+      {/* Fixed Navigation Sidebar - Now on the right */}
+      <Box
+        component="nav"
+        sx={{
+          width: 280,
+          flexShrink: 0,
+          position: 'fixed',
+          right: 0,
+          height: '100vh',
+          overflowY: 'auto',
+          borderLeft: '1px solid',
+          borderColor: 'divider',
+          zIndex: 1000,
+          backgroundColor: 'background.paper',
+        }}
+      >
+        <TreeNavigation items={navigationItems} />
+      </Box>
     </MainContainer>
   );
 };

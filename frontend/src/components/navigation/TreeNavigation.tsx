@@ -1,121 +1,133 @@
-import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import {
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
-  Box,
-  Paper,
-  Typography,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
+import React, { useEffect } from 'react';
+import { Box, List, ListItemButton, ListItemIcon, ListItemText, Collapse } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { NavigationItem } from '../../routes/navigationConfig';
-
-const NavContainer = styled(Paper)(({ theme }) => ({
-  width: 280,
-  height: '100%',
-  padding: theme.spacing(2),
-  backgroundColor: theme.palette.background.paper,
-  borderRadius: 0,
-  overflow: 'auto',
-}));
-
-const StyledNavLink = styled(NavLink)(({ theme }) => ({
-  textDecoration: 'none',
-  color: theme.palette.text.primary,
-  '&.active': {
-    '& .MuiListItemButton-root': {
-      backgroundColor: theme.palette.action.selected,
-    },
-    '& .MuiListItemText-primary': {
-      fontWeight: 'bold',
-      color: theme.palette.primary.main,
-    },
-  },
-}));
+import { useLocation } from 'react-router-dom';
+import { useActiveSection } from '../../context/ActiveSectionContext';
 
 interface TreeNavigationProps {
   items: NavigationItem[];
 }
 
-interface TreeItemProps {
-  item: NavigationItem;
-  level: number;
-}
-
-const TreeItem: React.FC<TreeItemProps> = ({ item, level }) => {
+const TreeNavigation: React.FC<TreeNavigationProps> = ({ items }) => {
+  const [open, setOpen] = React.useState<{ [key: string]: boolean }>({});
   const location = useLocation();
-  const [open, setOpen] = useState(location.pathname.startsWith(item.path));
-  const hasChildren = item.children && item.children.length > 0;
+  const { activeSection } = useActiveSection();
 
-  const handleClick = () => {
-    if (hasChildren) {
-      setOpen(!open);
+  console.log('TreeNavigation render - activeSection:', activeSection); // Debug log
+
+  // Function to check if an item or any of its children are active
+  const isItemActive = (item: NavigationItem): boolean => {
+    if (item.scrollTo === activeSection) {
+      console.log('Item is active:', item.label); // Debug log
+      return true;
     }
+    if (item.children) {
+      return item.children.some((child) => isItemActive(child));
+    }
+    return false;
+  };
+
+  // Update open state whenever activeSection changes
+  useEffect(() => {
+    console.log('useEffect triggered - activeSection:', activeSection); // Debug log
+
+    if (!activeSection) return;
+
+    // Find all parent items that should be expanded
+    const findAndExpandParents = (items: NavigationItem[], parentLabels: string[] = []) => {
+      items.forEach((item) => {
+        const currentPath = [...parentLabels, item.label];
+
+        if (item.scrollTo === activeSection) {
+          // Expand all parents when a section is active
+          parentLabels.forEach((label) => {
+            console.log('Expanding parent:', label); // Debug log
+            setOpen((prev) => ({ ...prev, [label]: true }));
+          });
+        }
+
+        if (item.children) {
+          findAndExpandParents(item.children, currentPath);
+        }
+      });
+    };
+
+    findAndExpandParents(items);
+  }, [activeSection, items]);
+
+  const handleClick = (label: string, scrollTo?: string) => {
+    if (scrollTo) {
+      const element = document.getElementById(scrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    setOpen((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
+
+  const renderItems = (items: NavigationItem[], level = 0) => {
+    return items.map((item) => {
+      const hasChildren = item.children && item.children.length > 0;
+      const isOpen = open[item.label] || false;
+      const isActive = isItemActive(item);
+
+      return (
+        <React.Fragment key={item.label}>
+          <ListItemButton
+            onClick={() => handleClick(item.label, item.scrollTo)}
+            sx={{
+              pl: level * 2 + 2,
+              '&:hover': {
+                backgroundColor: 'action.hover',
+              },
+              backgroundColor: isActive ? 'action.selected' : 'transparent',
+              '& .MuiListItemIcon-root': {
+                color: isActive ? 'primary.main' : 'inherit',
+                transition: 'color 0.2s ease',
+              },
+              '& .MuiListItemText-primary': {
+                color: isActive ? 'primary.main' : 'inherit',
+                fontWeight: isActive ? 600 : level === 0 ? 500 : 400,
+                transition: 'color 0.2s ease, font-weight 0.2s ease',
+              },
+              transition: 'background-color 0.2s ease',
+            }}
+          >
+            {item.icon && <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>}
+            <ListItemText
+              primary={item.label}
+              primaryTypographyProps={{
+                fontSize: level === 0 ? '1rem' : '0.875rem',
+              }}
+            />
+            {hasChildren && (isOpen ? <ExpandLess /> : <ExpandMore />)}
+          </ListItemButton>
+          {hasChildren && (
+            <Collapse in={isOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {renderItems(item.children || [], level + 1)}
+              </List>
+            </Collapse>
+          )}
+        </React.Fragment>
+      );
+    });
   };
 
   return (
-    <>
-      <StyledNavLink to={item.path} end={!hasChildren}>
-        <ListItemButton
-          onClick={handleClick}
-          sx={{
-            pl: level * 2,
-            py: 1.5,
-            borderRadius: '8px',
-            mb: 0.5,
-            '&:hover': {
-              backgroundColor: 'action.hover',
-            },
-          }}
-        >
-          {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-          <ListItemText primary={item.label} />
-          {hasChildren && (open ? <ExpandLess /> : <ExpandMore />)}
-        </ListItemButton>
-      </StyledNavLink>
-
-      {hasChildren && (
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {item?.children?.map((child, index) => (
-              <TreeItem key={index} item={child} level={level + 1} />
-            ))}
-          </List>
-        </Collapse>
-      )}
-    </>
-  );
-};
-
-const TreeNavigation: React.FC<TreeNavigationProps> = ({ items }) => {
-  return (
-    <NavContainer elevation={1}>
-      <Box mb={3}>
-        <Typography variant="h6" fontWeight="bold">
-          Yash Patel
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Welcome to my world
-        </Typography>
-      </Box>
-      <List
-        component="nav"
-        aria-labelledby="navigation-list"
-        sx={{
-          width: '100%',
-          bgcolor: 'background.paper',
-        }}
-      >
-        {items.map((item, index) => (
-          <TreeItem key={index} item={item} level={1} />
-        ))}
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: 'background.paper',
+        p: 2,
+      }}
+    >
+      <List component="nav" aria-labelledby="nested-list-subheader">
+        {renderItems(items)}
       </List>
-    </NavContainer>
+    </Box>
   );
 };
 

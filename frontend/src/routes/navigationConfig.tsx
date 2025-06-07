@@ -6,27 +6,38 @@ import BookIcon from '@mui/icons-material/Book';
 import YLetterIcon from '../components/icons/YLetterIcon';
 import HourglassDisabledIcon from '@mui/icons-material/HourglassDisabled';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+import PersonIcon from '@mui/icons-material/Person';
+import WorkIcon from '@mui/icons-material/Work';
 
 export interface NavigationItem {
   label: string;
-  path: string;
+  scrollTo?: string;
   icon?: ReactNode;
   children?: NavigationItem[];
 }
 
 export const navigationItems: NavigationItem[] = [
   {
-    label: 'Hello World',
-    path: '/hello-world',
+    label: 'Professional',
+    scrollTo: 'professional',
     icon: (
       <StyledIcon>
-        <HomeIcon />
+        <WorkIcon />
       </StyledIcon>
     ),
     children: [
       {
-        label: 'Background',
-        path: '/hello-world/about',
+        label: 'About Me',
+        scrollTo: 'about',
+        icon: (
+          <StyledIcon>
+            <PersonIcon />
+          </StyledIcon>
+        ),
+      },
+      {
+        label: 'Experience',
+        scrollTo: 'experience',
         icon: (
           <StyledIcon>
             <YLetterIcon />
@@ -34,14 +45,14 @@ export const navigationItems: NavigationItem[] = [
         ),
       },
       {
-        label: 'Experience',
-        path: '/hello-world/experience',
+        label: 'Background',
+        scrollTo: 'background',
       },
     ],
   },
   {
-    label: 'Hobbies',
-    path: '/hobbies',
+    label: 'Personal',
+    scrollTo: 'personal',
     icon: (
       <StyledIcon>
         <HourglassDisabledIcon />
@@ -50,7 +61,7 @@ export const navigationItems: NavigationItem[] = [
     children: [
       {
         label: 'Gaming',
-        path: '/hobbies/gaming',
+        scrollTo: 'gaming',
         icon: (
           <StyledIcon>
             <ChessQueenIcon />
@@ -59,7 +70,7 @@ export const navigationItems: NavigationItem[] = [
       },
       {
         label: 'Reading',
-        path: '/hobbies/reading',
+        scrollTo: 'reading',
         icon: (
           <StyledIcon>
             <BookIcon />
@@ -68,7 +79,7 @@ export const navigationItems: NavigationItem[] = [
       },
       {
         label: 'Fitness',
-        path: '/hobbies/fitness',
+        scrollTo: 'fitness',
         icon: (
           <StyledIcon>
             <MonitorHeartIcon />

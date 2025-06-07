@@ -1,13 +1,13 @@
 import React from 'react';
-import { Typography, Paper, Box, Link, IconButton } from '@mui/material';
+import { Typography, Paper, Box, Link } from '@mui/material';
 import { LinkedIn } from '@mui/icons-material';
-import { motion } from 'framer-motion';
 import InfiniteScrollLayout from '../../components/layout/InfiniteScrollLayout';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 const ProfessionalContent: React.FC = () => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+  <Box id="professional" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
     {/* Introduction */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="about" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         About Me
       </Typography>
@@ -37,7 +37,7 @@ const ProfessionalContent: React.FC = () => (
     </Paper>
 
     {/* Experience */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="experience" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         Professional Experience
       </Typography>
@@ -52,7 +52,7 @@ const ProfessionalContent: React.FC = () => (
     </Paper>
 
     {/* Background */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="background" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         Background
       </Typography>
@@ -73,9 +73,9 @@ const ProfessionalContent: React.FC = () => (
 );
 
 const PersonalContent: React.FC = () => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+  <Box id="personal" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
     {/* Hobbies Overview */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="personal" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         Hobbies & Interests
       </Typography>
@@ -86,7 +86,7 @@ const PersonalContent: React.FC = () => (
     </Paper>
 
     {/* Gaming */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="gaming" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         Gaming
       </Typography>
@@ -102,7 +102,7 @@ const PersonalContent: React.FC = () => (
     </Paper>
 
     {/* Reading */}
-    <Paper elevation={2} sx={{ p: 4 }}>
+    <Paper id="reading" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom color="primary">
         Reading
       </Typography>
@@ -116,16 +116,36 @@ const PersonalContent: React.FC = () => (
         perspectives and inspire creative problem-solving approaches.
       </Typography>
     </Paper>
+
+    {/* Fitness */}
+    <Paper id="fitness" elevation={2} sx={{ p: 4, scrollMarginTop: '2rem' }}>
+      <Typography variant="h5" gutterBottom color="primary">
+        Fitness
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Maintaining physical health is crucial for mental clarity and overall well-being.
+      </Typography>
+      <Typography variant="body1">
+        I enjoy a mix of strength training and cardio exercises. Regular exercise helps me maintain
+        energy levels and stay focused during long coding sessions.
+      </Typography>
+    </Paper>
   </Box>
 );
 
-const HomePage: React.FC = () => {
+const HomePageContent: React.FC = () => {
+  useIntersectionObserver();
+
   return (
     <InfiniteScrollLayout
       professionalContent={<ProfessionalContent />}
       personalContent={<PersonalContent />}
     />
   );
+};
+
+const HomePage: React.FC = () => {
+  return <HomePageContent />;
 };
 
 export default HomePage;
