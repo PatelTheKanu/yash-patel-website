@@ -4,6 +4,7 @@ import InfiniteScrollLayout from '../../components/layout/InfiniteScrollLayout';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import ChessQueenIcon from '../../components/icons/ChessQueenIcon';
 import Button from '@mui/material/Button';
+import { IntroSection } from '../../components/intro/IntroSection';
 
 const ProfessionalContent: React.FC = () => (
   <Box id="professional" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -125,10 +126,13 @@ const HomePageContent: React.FC = () => {
   useIntersectionObserver();
 
   return (
-    <InfiniteScrollLayout
-      professionalContent={<ProfessionalContent />}
-      personalContent={<PersonalContent />}
-    />
+    <>
+      <IntroSection />
+      <InfiniteScrollLayout
+        professionalContent={<ProfessionalContent />}
+        personalContent={<PersonalContent />}
+      />
+    </>
   );
 };
 
