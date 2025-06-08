@@ -5,6 +5,16 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import ChessQueenIcon from '../../components/icons/ChessQueenIcon';
 import Button from '@mui/material/Button';
 import { IntroSection } from '../../components/intro/IntroSection';
+import { TechStack } from '../../components/tech/TechStack';
+import type { TechIcon } from '../../assets/icons';
+
+const TECH_STACKS = {
+  languages: ['python', 'typescript', 'scala'] as TechIcon[],
+  frameworks: ['django', 'react', 'play'] as TechIcon[],
+  infrastructure: ['git', 'aws', 'kafka'] as TechIcon[],
+  monitoring: ['datadog', 'splunk', 'sentry'] as TechIcon[],
+  ai: ['chatgpt', 'claude'] as TechIcon[],
+};
 
 const ProfessionalContent: React.FC = () => (
   <Box id="professional" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -28,9 +38,41 @@ const ProfessionalContent: React.FC = () => (
       <Typography variant="body1" paragraph>
         I have worked full time at United Health Group, Rally Health, and Myriad Genetics.
       </Typography>
-      <Typography variant="body1">
-        My professional experience is in Python, Django, TypeScript, React, Scala, and Play.
-      </Typography>
+
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Programming Languages
+        </Typography>
+        <TechStack technologies={TECH_STACKS.languages} />
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Frameworks
+        </Typography>
+        <TechStack technologies={TECH_STACKS.frameworks} />
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Infrastructure & Tools
+        </Typography>
+        <TechStack technologies={TECH_STACKS.infrastructure} />
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Monitoring & Error Tracking
+        </Typography>
+        <TechStack technologies={TECH_STACKS.monitoring} />
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          AI Platforms
+        </Typography>
+        <TechStack technologies={TECH_STACKS.ai} />
+      </Box>
     </Paper>
 
     {/* Background */}
