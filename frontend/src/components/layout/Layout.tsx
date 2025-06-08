@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box, CssBaseline } from '@mui/material';
+import { Box, CssBaseline, useTheme, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import TreeNavigation from '../navigation/TreeNavigation';
@@ -17,7 +17,10 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const ContentContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  marginRight: 280,
+  marginRight: 0,
+  [theme.breakpoints.up('md')]: {
+    marginRight: 280,
+  },
   overflowY: 'auto',
   display: 'flex',
   flexDirection: 'column',
@@ -43,6 +46,9 @@ const pageTransition = {
 };
 
 const Layout: React.FC = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <MainContainer>
       <CssBaseline />
@@ -58,28 +64,31 @@ const Layout: React.FC = () => {
         <Footer />
       </ContentContainer>
 
-      {/* Fixed Navigation Sidebar - Now on the right */}
-      <Box
-        component="nav"
-        sx={{
-          width: 280,
-          flexShrink: 0,
-          position: 'fixed',
-          right: 0,
-          height: '100vh',
-          overflowY: 'auto',
-          borderLeft: 'none',
-          borderColor: 'divider',
-          zIndex: 1000,
-          backdropFilter: 'blur(10px)',
-          backgroundColor: 'transparent',
-          '& > *': {
+      {/* Fixed Navigation Sidebar - Now on the right and hidden on mobile */}
+      {!isMobile && (
+        <Box
+          component="nav"
+          sx={{
+            width: 280,
+            flexShrink: 0,
+            position: 'fixed',
+            right: 0,
+            height: '100vh',
+            overflowY: 'auto',
+            borderLeft: 'none',
+            borderColor: 'divider',
+            zIndex: 1000,
             backdropFilter: 'blur(10px)',
-          },
-        }}
-      >
-        <TreeNavigation items={navigationItems} />
-      </Box>
+            backgroundColor: 'transparent',
+            '& > *': {
+              backdropFilter: 'blur(10px)',
+            },
+            display: { xs: 'none', md: 'block' },
+          }}
+        >
+          <TreeNavigation items={navigationItems} />
+        </Box>
+      )}
     </MainContainer>
   );
 };
