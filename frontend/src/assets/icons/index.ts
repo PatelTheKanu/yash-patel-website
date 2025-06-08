@@ -11,7 +11,7 @@ export const TECH_ICONS = {
   git: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
 
   // Cloud & Infrastructure
-  aws: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+  aws: 'aws.svg',
   kafka: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg',
 
   // Monitoring & Error Tracking

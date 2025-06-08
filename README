@@ -6,4 +6,4 @@ Yash Patel
 
 The code behind the website located at www.yashpatel.website
 
-The site is built with React, TypeScript, and Material UI on the frontend, and with python Django backend.
+The site is built with React, TypeScript, and Material UI. It is a static website deployed and hosted with github pages.
