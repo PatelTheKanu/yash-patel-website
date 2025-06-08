@@ -7,7 +7,9 @@ interface ActiveSectionContextType {
 
 const ActiveSectionContext = createContext<ActiveSectionContextType>({
   activeSection: '',
-  setActiveSection: () => {},
+  setActiveSection: (section: string) => {
+    throw new Error('ActiveSectionContext not initialized');
+  },
 });
 
 export const useActiveSection = () => useContext(ActiveSectionContext);
