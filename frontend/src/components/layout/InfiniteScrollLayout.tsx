@@ -8,7 +8,6 @@ const SectionHeader = styled(Box)(({ theme }) => ({
   zIndex: 2,
   padding: theme.spacing(2),
   backdropFilter: 'blur(8px)',
-  backgroundColor: alpha(theme.palette.background.default, 0.8),
   borderBottom: `1px solid ${theme.palette.divider}`,
   transition: 'all 0.3s ease',
   '&.scrolled': {
