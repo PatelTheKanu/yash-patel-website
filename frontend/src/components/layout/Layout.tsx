@@ -46,7 +46,7 @@ const Layout: React.FC = () => {
   return (
     <MainContainer>
       <CssBaseline />
-      {/*<GradientBackground />*/}
+      <GradientBackground />
 
       {/* Main Content */}
       <ContentContainer>
